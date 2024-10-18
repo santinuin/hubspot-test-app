@@ -1,0 +1,14 @@
+*/node_modules/
+*/.angular/
+*/.vscode/
+*/.idea/
+*/.git/
+*/.DS_Store
+*/.env
+*/.env.local
+*/.env.development
+*/.env.test
+*/.env.production
+*/.env.staging
+*/.env.*.local
+*/dist/
