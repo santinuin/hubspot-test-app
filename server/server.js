@@ -4,13 +4,13 @@ const app = express();
 const port = 3000;
 
 // Servir el proyecto de Angular
-app.use(express.static(path.join(__dirname, '../formulario-hsm/dist/formulario-hsm')));
+app.use(express.static(path.join(__dirname, '../iframe/dist/iframe')));
 
 // Ruta para la respuesta JSON card
 app.get('/api/card', (req, res) => {
     res.json({
         "primaryAction": {
-            "uri": "https://1082-148-222-130-121.ngrok-free.app/",
+            "uri": "https://cc66-2803-9810-33bb-f810-faeb-baa2-5f42-f8a9.ngrok-free.app/",
             "width": 400,
             "height": 320,
             "type": "IFRAME",
@@ -22,7 +22,7 @@ app.get('/api/card', (req, res) => {
 
 // Redirigir todas las demás rutas al index.html de Angular
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../formulario-hsm/dist/formulario-hsm/index.html'));
+    res.sendFile(path.join(__dirname, '../iframe/dist/iframe/index.html'));
 });
 
 app.listen(port, () => {

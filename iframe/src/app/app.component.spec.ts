@@ -15,13 +15,13 @@ describe('AppComponent', () => {
   it(`should have as title 'formulario-hsm'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('formulario-hsm');
+    expect(app.title).toEqual('iframe');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('formulario-hsm app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('iframe app is running!');
   });
 });

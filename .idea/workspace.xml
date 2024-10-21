@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="692397a1-4ea5-4698-b155-7c976c4e80db" name="Changes" comment="first commit" />
+    <list default="true" id="692397a1-4ea5-4698-b155-7c976c4e80db" name="Changes" comment="first commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/formulario-hsm/src/app/form/form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/formulario-hsm/src/app/form/form.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/formulario-hsm/src/app/form/form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/formulario-hsm/src/app/form/form.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oauth-quickstart-nodejs/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/oauth-quickstart-nodejs/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,6 +36,7 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2ncrDECm3efyoKNsWEYMQuoecQT" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -38,13 +45,14 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/santinuin/repos/own/hubspot/oauth-quickstart-nodejs",
+    "last_opened_file_path": "/home/santinuin/repos/own/hubspot/legacy-projects",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "editor.preferences.fonts.default",
+    "ts.external.directory.path": "/home/santinuin/repos/own/hubspot/hubspot-test-app/formulario-hsm/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -71,6 +79,8 @@
       <workItem from="1710945553434" duration="136000" />
       <workItem from="1729283089759" duration="268000" />
       <workItem from="1729283454258" duration="1459000" />
+      <workItem from="1729284962034" duration="412000" />
+      <workItem from="1729510992131" duration="2948000" />
     </task>
     <task id="LOCAL-00001" summary="second commit">
       <option name="closed" value="true" />
@@ -120,7 +130,23 @@
       <option name="project" value="LOCAL" />
       <updated>1729284751034</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="first commit">
+      <option name="closed" value="true" />
+      <created>1729285171217</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1729285171217</updated>
+    </task>
+    <task id="LOCAL-00008" summary="first commit">
+      <option name="closed" value="true" />
+      <created>1729285224127</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1729285224127</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
