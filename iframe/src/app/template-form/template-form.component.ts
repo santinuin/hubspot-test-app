@@ -6,10 +6,10 @@ import {AuthService} from "../service/auth.service";
 
 @Component({
   selector: 'app-template-form',
-  templateUrl: './template-form.html',
+  templateUrl: './template-form.component.html',
   styleUrls: ['./template-form.component.css']
 })
-export class TemplateForm implements OnInit {
+export class TemplateFormComponent implements OnInit {
   templateForm!: FormGroup;
   templateOptions: { value: string, label: string }[] = [];
 
@@ -22,8 +22,6 @@ export class TemplateForm implements OnInit {
 
   ngOnInit(): void {
     this.templateForm = this.fb.group({
-      user: [''],
-      password: [''],
       template: [''],
       message: [''],
       destinataries: ['']

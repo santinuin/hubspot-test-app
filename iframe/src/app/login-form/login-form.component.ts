@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {LoginService} from "../service/login.service";
 import {AuthService} from "../service/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login-form',
@@ -14,7 +15,8 @@ export class LoginFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private loginService: LoginService,
-    private authService: AuthService) {
+    private authService: AuthService,
+    private router: Router) {
   }
 
   ngOnInit(): void {
@@ -29,6 +31,7 @@ export class LoginFormComponent implements OnInit {
     this.loginService.login(this.loginForm.value).subscribe((response) => {
       this.authService.accessToken = response.access_token;
       console.log('Token: ', this.authService.accessToken);
+      this.router.navigate(['/template-form']);
     });
   }
 }
