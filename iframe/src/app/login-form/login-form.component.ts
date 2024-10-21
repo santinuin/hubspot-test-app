@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {LoginService} from "../service/login.service";
 import {AuthService} from "../service/auth.service";
 import {Router} from "@angular/router";
+import {ApiMassiveService} from "../service/api-massive.service";
 
 @Component({
   selector: 'app-login-form',
@@ -14,7 +14,7 @@ export class LoginFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private loginService: LoginService,
+    private apiMassiveService: ApiMassiveService,
     private authService: AuthService,
     private router: Router) {
   }
@@ -28,7 +28,7 @@ export class LoginFormComponent implements OnInit {
 
   login() {
     console.log(this.loginForm.value);
-    this.loginService.login(this.loginForm.value).subscribe((response) => {
+    this.apiMassiveService.login(this.loginForm.value).subscribe((response) => {
       this.authService.accessToken = response.access_token;
       console.log('Token: ', this.authService.accessToken);
       this.router.navigate(['/template-form']);

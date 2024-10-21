@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {HsmService} from "../service/hsm.service";
+import {ApiMassiveService} from "../service/api-massive.service";
 import {map} from "rxjs";
 import {AuthService} from "../service/auth.service";
 
@@ -15,7 +15,7 @@ export class TemplateFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private hsmService: HsmService,
+    private apiMassiveService: ApiMassiveService,
     private authService: AuthService,
     ) {
   }
@@ -31,7 +31,7 @@ export class TemplateFormComponent implements OnInit {
   }
 
 loadTemplateOptions() {
-  this.hsmService.fetchTemplates()
+  this.apiMassiveService.fetchTemplates()
     .pipe(
       map(templates => templates.map(template => ({
         value: template.id,

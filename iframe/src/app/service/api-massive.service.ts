@@ -1,13 +1,19 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, map, Observable, throwError} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
-export class HsmService {
+export class ApiMassiveService {
 
   constructor(private http: HttpClient) {
+  }
+
+  login(loginData: any): Observable <any> {
+    return this.http.post<any>('https://condor-dev.chattigo.com/api-massive/message/login', loginData)
+      .pipe(
+        catchError(error => this.errorHandler(error)));
   }
 
   fetchTemplates(): Observable<any[]> {
@@ -15,6 +21,11 @@ export class HsmService {
       .pipe(
         map(response => response.data.flatMap(item => item.templates)),
         catchError(error => this.errorHandler(error)));
+  }
+
+  sendHsm(hsmData: any, headers: HttpHeaders): Observable<any> {
+    return this.http.post('https://condor-dev.chattigo.com/api-massive/message/inbound', hsmData, {headers})
+      .pipe(catchError(error => this.errorHandler(error)));
   }
 
   errorHandler(error: any) {
