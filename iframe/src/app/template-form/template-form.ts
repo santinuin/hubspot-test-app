@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {HsmService} from "../service/hsm.service";
 import {map} from "rxjs";
+import {AuthService} from "../service/auth.service";
 
 @Component({
   selector: 'app-template-form',
@@ -12,7 +13,11 @@ export class TemplateForm implements OnInit {
   templateForm!: FormGroup;
   templateOptions: { value: string, label: string }[] = [];
 
-  constructor(private fb: FormBuilder, private hsmService: HsmService) {
+  constructor(
+    private fb: FormBuilder,
+    private hsmService: HsmService,
+    private authService: AuthService,
+    ) {
   }
 
   ngOnInit(): void {
@@ -41,8 +46,9 @@ loadTemplateOptions() {
     });
 }
 
-  enviarDatos() {
+  send() {
     console.log(this.templateForm.value);
+    console.log(this.authService.accessToken);
     /*    const datos = this.formulario.value;
         this.http.post('https://tu-servidor.com/api/submit', datos)
           .subscribe(response => {
