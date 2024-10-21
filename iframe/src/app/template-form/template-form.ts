@@ -5,18 +5,18 @@ import {map} from "rxjs";
 
 @Component({
   selector: 'app-template-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  templateUrl: './template-form.html',
+  styleUrls: ['./template-form.component.css']
 })
-export class FormComponent implements OnInit {
-  formulario!: FormGroup;
+export class TemplateForm implements OnInit {
+  templateForm!: FormGroup;
   templateOptions: { value: string, label: string }[] = [];
 
   constructor(private fb: FormBuilder, private hsmService: HsmService) {
   }
 
   ngOnInit(): void {
-    this.formulario = this.fb.group({
+    this.templateForm = this.fb.group({
       user: [''],
       password: [''],
       template: [''],
@@ -42,7 +42,7 @@ loadTemplateOptions() {
 }
 
   enviarDatos() {
-    console.log(this.formulario.value);
+    console.log(this.templateForm.value);
     /*    const datos = this.formulario.value;
         this.http.post('https://tu-servidor.com/api/submit', datos)
           .subscribe(response => {
