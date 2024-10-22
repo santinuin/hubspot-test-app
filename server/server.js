@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname, '../iframe/dist/iframe')));
 app.get('/api/card', (req, res) => {
     res.json({
         "primaryAction": {
-            "uri": "https://cc66-2803-9810-33bb-f810-faeb-baa2-5f42-f8a9.ngrok-free.app/",
+            "uri": "https://fbfc-2803-9810-33bb-f810-91ca-ddf2-4cfd-268e.ngrok-free.app/",
             "width": 400,
             "height": 320,
             "type": "IFRAME",

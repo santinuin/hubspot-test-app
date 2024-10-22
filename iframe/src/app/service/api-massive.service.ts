@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, map, Observable, throwError} from "rxjs";
+import {jwtDecode } from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
@@ -16,15 +17,19 @@ export class ApiMassiveService {
         catchError(error => this.errorHandler(error)));
   }
 
-  fetchTemplates(): Observable<any[]> {
-    return this.http.get<{ data: { templates: any[] }[] }>('http://localhost:3003/')
+  fetchTemplates(token: string): Observable<any[]> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    const decodedToken: any = jwtDecode(token);
+    const idClient = decodedToken.idClient;
+
+    return this.http.get<{ data: { templates: any[] }[] }>(`https://condor-dev.chattigo.com/api-massive/message/templates/client_id/${idClient}`, {headers})
       .pipe(
-        map(response => response.data.flatMap(item => item.templates)),
+        map(response => response.data),
         catchError(error => this.errorHandler(error)));
   }
 
-  sendHsm(hsmData: any, headers: HttpHeaders): Observable<any> {
-    return this.http.post('https://condor-dev.chattigo.com/api-massive/message/inbound', hsmData, {headers})
+  sendInboundHsm(inboundData: any, headers: HttpHeaders): Observable<any> {
+    return this.http.post('https://condor-dev.chattigo.com/api-massive/message/inbound', inboundData, {headers})
       .pipe(catchError(error => this.errorHandler(error)));
   }
 
@@ -32,3 +37,4 @@ export class ApiMassiveService {
     return throwError(() => new Error(`Error: ${error.message}`));
   }
 }
+

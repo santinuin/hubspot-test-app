@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {ApiMassiveService} from "../service/api-massive.service";
 import {map} from "rxjs";
 import {AuthService} from "../service/auth.service";
+import {HsmMapperService} from "../service/hsm-mapper.service";
 
 @Component({
   selector: 'app-template-form',
@@ -16,43 +17,46 @@ export class TemplateFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private apiMassiveService: ApiMassiveService,
+    private hsmMapperService: HsmMapperService,
     private authService: AuthService,
-    ) {
+  ) {
   }
 
   ngOnInit(): void {
     this.templateForm = this.fb.group({
-      template: [''],
+      templateName: [''],
       message: [''],
-      destinataries: ['']
+      destinations: ['']
     });
 
     this.loadTemplateOptions();
   }
 
-loadTemplateOptions() {
-  this.apiMassiveService.fetchTemplates()
-    .pipe(
-      map(templates => templates.map(template => ({
-        value: template.id,
-        label: template.name
-      })))
-    )
-    .subscribe((data) => {
-      this.templateOptions = data;
-      console.log(this.templateOptions);
-    });
-}
+  loadTemplateOptions() {
+
+    this.apiMassiveService.fetchTemplates(this.authService.accessToken)
+      .pipe(
+        map(templates => templates.map(template => ({
+          value: template.name,
+          label: template.name
+        })))
+      )
+      .subscribe((data) => {
+        this.templateOptions = data;
+        console.log(this.templateOptions);
+      });
+  }
 
   send() {
-    console.log(this.templateForm.value);
-    console.log(this.authService.accessToken);
-    /*    const datos = this.formulario.value;
-        this.http.post('https://tu-servidor.com/api/submit', datos)
-          .subscribe(response => {
-            console.log('Datos enviados correctamente');
-          }, error => {
-            console.error('Error al enviar los datos:', error);
-          });*/
+    const inboundDataMapper = this.hsmMapperService.inboundDataMapper(
+      this.templateForm.value,
+      this.authService.accessToken);
+
+    this.apiMassiveService.sendInboundHsm(inboundDataMapper.inboundData, inboundDataMapper.headers).subscribe(
+      {
+        next: () => console.log('HSM enviado'),
+        error: (error: any) => console.error('Error al enviar HSM', error)
+      }
+    );
   }
 }

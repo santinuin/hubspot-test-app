@@ -1,8 +1,8 @@
 <div class="form-container">
   <form [formGroup]="templateForm" (ngSubmit)="send()">
     <div class="form-group">
-      <label for="template">Template:</label>
-      <select id="template" formControlName="template">
+      <label for="templateName">Template:</label>
+      <select id="templateName" formControlName="templateName">
         <option *ngFor="let option of templateOptions" [value]="option.value">{{ option.label }}</option>
       </select>
     </div>
@@ -13,8 +13,8 @@
     </div>
 
     <div class="form-group">
-      <label for="destinataries">Destinatarios:</label>
-      <input id="destinataries" formControlName="destinataries" type="text">
+      <label for="destinations">Destinatarios:</label>
+      <input id="destinations" formControlName="destinations" type="text">
     </div>
     <button type="submit" class="submit-button">Enviar</button>
   </form>
